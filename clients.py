@@ -49,6 +49,6 @@ class CrewAiClient:
                 return response_json["result"]
             elif response_json["state"] == "FAILED":
                 raise Exception(f"Request failed with status: {response_json}")
-            sleep(0.2)
+            sleep(1)
             attempts += 1
         raise Exception(f"Request timed out after {max_attempts} attempts")
