@@ -1,3 +1,4 @@
+import os
 from typing import Any
 
 import dotenv
@@ -8,7 +9,9 @@ from starlette.responses import Response
 from services import CrewaiEnterpriseService
 
 dotenv.load_dotenv()
-mcp = FastMCP("CrewAI Expert")
+mcp = FastMCP(
+    "CrewAI Expert", host=os.getenv("FASTMCP_HOST"), port=os.getenv("FASTMCP_PORT")
+)
 
 
 @mcp.custom_route("/", methods=["HEAD"])
